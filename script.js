@@ -15,8 +15,8 @@ document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
         .map(input => input.value);
 
-    if (selectedCountries.length === 0) {
-        alert("Please select at least one country.");
+    if (selectedCountries.length < 2) {
+        alert("Please select at least two countries.");
         return;
     }
 
@@ -27,17 +27,22 @@ document.getElementById('start-tournament').addEventListener('click', () => {
     document.getElementById('progress-bar-container').style.display = 'block';
     document.getElementById('ranker-box').style.display = 'flex';
 
+    resetTournament();
     displayDishes();
     updateProgressBar();
 });
 
+function resetTournament() {
+    roundsCompleted = 0;
+    winners = [];
+    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('result').textContent = '';
+}
+
 function displayDishes() {
     if (currentDishes.length < 2) {
-        if (currentDishes.length === 1) {
-            document.getElementById('result').textContent = 'Winner: ' + currentDishes[0].name;
-        } else if (winners.length === 1) {
-            document.getElementById('result').textContent = 'Winner: ' + winners[0].name;
-        }
+        const finalWinner = currentDishes.length === 1 ? currentDishes[0] : winners[0];
+        document.getElementById('result').textContent = 'Winner: ' + finalWinner.name;
         document.getElementById('ranker-box').style.display = 'none';
         document.getElementById('next-round').style.display = 'none';
         return;
@@ -60,6 +65,7 @@ document.querySelectorAll('.dish').forEach(dishElement => {
         const selectedDishName = event.currentTarget.dataset.dish;
         const selectedDish = findDishByName(selectedDishName);
         winners.push(selectedDish);
+        highlightSelectedDish(event.currentTarget); // Highlight the selected dish
 
         if (currentDishes.length === 0 && winners.length > 1) {
             currentDishes = winners;
@@ -71,6 +77,13 @@ document.querySelectorAll('.dish').forEach(dishElement => {
         displayDishes();
     });
 });
+
+function highlightSelectedDish(selectedElement) {
+    document.querySelectorAll('.dish').forEach(dish => {
+        dish.classList.remove('selected'); // Remove highlight from all
+    });
+    selectedElement.classList.add('selected'); // Highlight the selected one
+}
 
 function findDishByName(name) {
     return Object.values(dishesByCountry).flat().find(dish => dish.name === name);
