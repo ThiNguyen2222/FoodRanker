@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Tournament</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Tournament</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="container">
-    <h1>Food Tournament</h1>
-    <div id="country-selection">
-      <h2>Select Countries</h2>
-      <label><input type="checkbox" value="USA"> USA</label>
-      <label><input type="checkbox" value="Italy"> Italy</label>
-      <label><input type="checkbox" value="Mexico"> Mexico</label>
-      <label><input type="checkbox" value="India"> India</label>
-      <label><input type="checkbox" value="Japan"> Japan</label>
-      <button id="start-tournament">Start Tournament</button>
-    </div>
-    <div id="dish-container" class="dish-container" style="display:none;">
-      <div id="dish1" class="dish"></div>
-      <div id="dish2" class="dish"></div>
-    </div>
-    <button id="next-round" style="display:none;">Next Round</button>
-    <div id="result" class="result"></div>
-  </div>
+    <div class="container">
+        <h1>Food Tournament</h1>
 
-  <script src="script.js"></script>
+        <div id="country-selection">
+            <h2>Select Countries</h2>
+            <label><input type="checkbox" value="USA"> USA</label>
+            <label><input type="checkbox" value="Italy"> Italy</label>
+            <label><input type="checkbox" value="Mexico"> Mexico</label>
+            <label><input type="checkbox" value="India"> India</label>
+            <label><input type="checkbox" value="Japan"> Japan</label>
+            <button id="start-tournament">Start Tournament</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div id="progress-bar-container" style="display:none;">
+            <div id="progress-bar" style="width: 0%;"></div>
+        </div>
+
+        <!-- Main Ranker Box -->
+        <div id="ranker-box" class="ranker-box" style="display:none;">
+            <div id="dish-container" class="dish-container">
+                <div id="dish1" class="dish">
+                    <img id="dish1-img" src="" alt="Dish 1">
+                    <p id="dish1-name"></p>
+                </div>
+                <div id="dish2" class="dish">
+                    <img id="dish2-img" src="" alt="Dish 2">
+                    <p id="dish2-name"></p>
+                </div>
+            </div>
+        </div>
+
+        <button id="next-round" style="display:none;">Next Round</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
