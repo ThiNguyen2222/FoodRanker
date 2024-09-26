@@ -1,15 +1,16 @@
 const dishesByCountry = {
-    'USA': ['Burger', 'Hot Dog', 'Mac and Cheese'],
-    'Italy': ['Pizza', 'Pasta', 'Gelato'],
-    'Mexico': ['Tacos', 'Enchiladas', 'Guacamole'],
-    'India': ['Biryani', 'Butter Chicken', 'Samosa'],
-    'Japan': ['Sushi', 'Ramen', 'Tempura']
+    'USA': [{ name: 'Burger', img: 'burger.jpg' }, { name: 'Hot Dog', img: 'hotdog.jpg' }],
+    'Italy': [{ name: 'Pizza', img: 'pizza.jpg' }, { name: 'Pasta', img: 'pasta.jpg' }],
+    'Mexico': [{ name: 'Tacos', img: 'tacos.jpg' }, { name: 'Guacamole', img: 'guacamole.jpg' }],
+    'India': [{ name: 'Biryani', img: 'biryani.jpg' }, { name: 'Samosa', img: 'samosa.jpg' }],
+    'Japan': [{ name: 'Sushi', img: 'sushi.jpg' }, { name: 'Ramen', img: 'ramen.jpg' }]
 };
 
 let currentDishes = [];
-let winningDishes = [];
+let winners = [];
+let roundsCompleted = 0;
+let totalRounds = 0;
 
-// Start the tournament based on selected countries
 document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
         .map(input => input.value);
@@ -20,49 +21,62 @@ document.getElementById('start-tournament').addEventListener('click', () => {
     }
 
     currentDishes = selectedCountries.flatMap(country => dishesByCountry[country]);
+    totalRounds = Math.ceil(currentDishes.length / 2);
+
     document.getElementById('country-selection').style.display = 'none';
-    document.getElementById('dish-container').style.display = 'flex';
+    document.getElementById('progress-bar-container').style.display = 'block';
+    document.getElementById('ranker-box').style.display = 'flex';
+
     displayDishes();
+    updateProgressBar();
 });
 
-// Function to display two random dishes
 function displayDishes() {
     if (currentDishes.length < 2) {
-        document.getElementById('result').textContent = 'Winner: ' + currentDishes[0];
+        if (currentDishes.length === 1) {
+            document.getElementById('result').textContent = 'Winner: ' + currentDishes[0].name;
+        } else if (winners.length === 1) {
+            document.getElementById('result').textContent = 'Winner: ' + winners[0].name;
+        }
+        document.getElementById('ranker-box').style.display = 'none';
         document.getElementById('next-round').style.display = 'none';
         return;
     }
 
-    const randomIndex1 = Math.floor(Math.random() * currentDishes.length);
-    let randomIndex2;
+    const dish1 = currentDishes.shift();
+    const dish2 = currentDishes.shift();
 
-    do {
-        randomIndex2 = Math.floor(Math.random() * currentDishes.length);
-    } while (randomIndex1 === randomIndex2);
+    document.getElementById('dish1-img').src = dish1.img;
+    document.getElementById('dish1-name').textContent = dish1.name;
+    document.getElementById('dish1').dataset.dish = dish1.name;
 
-    document.getElementById('dish1').textContent = currentDishes[randomIndex1];
-    document.getElementById('dish2').textContent = currentDishes[randomIndex2];
-
-    currentDishes = currentDishes.filter((_, index) => index !== randomIndex1 && index !== randomIndex2);
+    document.getElementById('dish2-img').src = dish2.img;
+    document.getElementById('dish2-name').textContent = dish2.name;
+    document.getElementById('dish2').dataset.dish = dish2.name;
 }
 
-// Handle dish selection
-document.getElementById('dish-container').addEventListener('click', (event) => {
-    if (event.target.classList.contains('dish')) {
-        const selectedDish = event.target.textContent;
-        winningDishes.push(selectedDish);
-        document.getElementById('next-round').style.display = 'block';
-    }
-});
+document.querySelectorAll('.dish').forEach(dishElement => {
+    dishElement.addEventListener('click', (event) => {
+        const selectedDishName = event.currentTarget.dataset.dish;
+        const selectedDish = findDishByName(selectedDishName);
+        winners.push(selectedDish);
 
-// Go to the next round
-document.getElementById('next-round').addEventListener('click', () => {
-    if (winningDishes.length > 0) {
-        currentDishes.push(winningDishes[winningDishes.length - 1]);
-        winningDishes = [];
+        if (currentDishes.length === 0 && winners.length > 1) {
+            currentDishes = winners;
+            winners = [];
+        }
+
+        roundsCompleted++;
+        updateProgressBar();
         displayDishes();
-    }
+    });
 });
 
-// Hide dish container initially
-document.getElementById('dish-container').style.display = 'none';
+function findDishByName(name) {
+    return Object.values(dishesByCountry).flat().find(dish => dish.name === name);
+}
+
+function updateProgressBar() {
+    const percentage = Math.min(100, (roundsCompleted / totalRounds) * 100);
+    document.getElementById('progress-bar').style.width = percentage + '%';
+}
