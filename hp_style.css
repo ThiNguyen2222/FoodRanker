@@ -3,58 +3,104 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins, sans-serif";
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('hp_images/burger.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-  }
+}
 
-#header{
+#header {
     width: 100%;
-    height: 100vh;
     background-image: url(images/background.jpg);
     background-size: cover;
     background-position: center;
 }
-.container{
+
+.container {
     padding: 10px 10%;
 }
-nav{
+
+nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center; 
+    width: 100%; 
 }
-.logo{
-    width: 140px;
+
+nav ul {
+    display: flex; 
 }
-nav ul li{
-    display: inline-block;
+
+nav ul li {
     list-style: none;
-    margin: 10px 20px;
+    margin: 0 20px; 
 }
-nav ul li a{
+
+nav ul li a {
     color: rgb(222, 222, 222);
     text-decoration: none;
     font-size: 18px;
-    position: relative;
+    background-color: rgba(107, 5, 4, 0.8); 
+    padding: 10px 20px;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
-nav ul li a::after{
-    content: '';
-    width: 0%;
-    height: 3px;
-    background: #6B0504;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    transition: 0.5s;
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3); 
+    color: #6B0504; 
 }
-nav ul li a:hover::after{
+
+
+.inner-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    height: 100%; 
+    text-align: center; 
+}
+
+/* Content box styling */
+.content-box {
     width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.5); 
+    color: #6B0504; 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; 
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 400px; 
 }
+
+
+.start-button {
+    display: inline-block; 
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    background-color: #6B0504; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+}
+
+.start-button:hover {
+    background-color: #8A0808; 
+}
+
