@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Ranker</title>
-    <link rel="StyleSheet" type="text/css" href="hp_style.css">
+    <link rel="stylesheet" type="text/css" href="hp_style.css">
 </head>
 <body>
     <div id="header">
         <div class="container">
-            <nav>
-                <!-- <img src="images/logo.png" class="logo"> -->
-                <ul>
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#catgories">Categories</a></li>
-                    <li><a href="#informations">Informations</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <div id="content">
+                <div class="inner-container">
+                    <!-- Navigation Tabs inside the box -->
+                    <nav>
+                        <ul>
+                            <li><a href="javascript:void(0);" onclick="showContent('home')">Home</a></li>
+                            <li><a href="javascript:void(0);" onclick="showContent('categories')">Categories</a></li>
+                            <li><a href="javascript:void(0);" onclick="showContent('information')">Information</a></li>
+                            <li><a href="javascript:void(0);" onclick="showContent('contact')">Contact</a></li>
+                        </ul>
+                    </nav>
+            
+                    <!-- Content Sections -->
+                    <div class="content-box" id="home">
+                        <h1>Welcome to Food Ranker</h1>
+                        <p>This is the home page content.</p>
+                        <a href="index.html" class="start-button">START</a> <!-- START button -->
+                    </div>
+            
+                    <div class="content-box" id="categories" style="display:none;">
+                        <h1>Categories</h1>
+                        <p>Explore different food categories.</p>
+                    </div>
+            
+                    <div class="content-box" id="information" style="display:none;">
+                        <h1>Information</h1>
+                        <p>Here is some useful information about food ranking.</p>
+                    </div>
+            
+                    <div class="content-box" id="contact" style="display:none;">
+                        <h1>Contact Us</h1>
+                        <p>Get in touch with us!</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="hp.js"></script>
 </body>
 </html>
