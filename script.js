@@ -3,13 +3,19 @@ const dishesByCountry = {
     'Italy': [{ name: 'Pizza', img: 'pizza.jpg' }, { name: 'Pasta', img: 'pasta.jpg' }],
     'Mexico': [{ name: 'Tacos', img: 'tacos.jpg' }, { name: 'Guacamole', img: 'guacamole.jpg' }],
     'India': [{ name: 'Biryani', img: 'biryani.jpg' }, { name: 'Samosa', img: 'samosa.jpg' }],
-    'Japan': [{ name: 'Sushi', img: 'sushi.jpg' }, { name: 'Ramen', img: 'ramen.jpg' }]
+    'Japan': [{ name: 'Sushi', img: 'Japan/sushi.jpg' }, { name: 'Ramen', img: 'ramen.jpg' }],
+    'China': [{ name: 'Kung Pao Chicken', img: 'kungpao.jpg' }, { name: 'Spring Rolls', img: 'springrolls.jpg' }], // Added China
+    'France': [{ name: 'Croissant', img: 'croissant.jpg' }, { name: 'Ratatouille', img: 'ratatouille.jpg' }], // Added France
+    'Korea': [{ name: 'Kimchi', img: 'kimchi.jpg' }, { name: 'Bibimbap', img: 'bibimbap.jpg' }], // Added Korea
+    'Thailand': [{ name: 'Pad Thai', img: 'padthai.jpg' }, { name: 'Tom Yum', img: 'tomyum.jpg' }], // Added Thailand
+    'Vietnam': [{ name: 'Pho', img: 'pho.jpg' }, { name: 'Banh Mi', img: 'banhmi.jpg' }] // Added Vietnam
 };
+
 
 let currentDishes = [];
 let winners = [];
 let roundsCompleted = 0;
-let totalRounds = 0;
+let totalRounds = 0
 
 document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
