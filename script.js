@@ -161,12 +161,10 @@ const dishesByCountry = {
     ]
 };
 
-
-
 let currentDishes = [];
 let winners = [];
 let roundsCompleted = 0;
-let totalRounds = 0
+let totalMatches = 0;
 
 document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
@@ -177,8 +175,11 @@ document.getElementById('start-tournament').addEventListener('click', () => {
         return;
     }
 
+    // Combine dishes from the selected countries
     currentDishes = selectedCountries.flatMap(country => dishesByCountry[country]);
-    totalRounds = Math.ceil(currentDishes.length / 2);
+
+    // Calculate total matches: number of dishes - 1
+    totalMatches = currentDishes.length - 1;
 
     document.getElementById('country-selection').style.display = 'none';
     document.getElementById('progress-bar-container').style.display = 'block';
@@ -197,12 +198,21 @@ function resetTournament() {
 }
 
 function displayDishes() {
-    if (currentDishes.length < 2) {
-        const finalWinner = currentDishes.length === 1 ? currentDishes[0] : winners[0];
-        document.getElementById('result').textContent = 'Winner: ' + finalWinner.name;
+    if (currentDishes.length === 1 && winners.length === 0) {
+        // Final winner
+        document.getElementById('result').textContent = 'Winner: ' + currentDishes[0].name;
         document.getElementById('ranker-box').style.display = 'none';
         document.getElementById('next-round').style.display = 'none';
+        document.getElementById('final-buttons').style.display = 'block'; // Show the buttons
         return;
+    }
+
+    if (currentDishes.length < 2) {
+        // End of round, move winners to the next round
+        if (winners.length > 1) {
+            currentDishes = winners.slice(); // Move winners to currentDishes
+            winners = [];
+        }
     }
 
     const dish1 = currentDishes.shift();
@@ -217,6 +227,7 @@ function displayDishes() {
     document.getElementById('dish2').dataset.dish = dish2.name;
 }
 
+
 document.querySelectorAll('.dish').forEach(dishElement => {
     dishElement.addEventListener('click', (event) => {
         const selectedDishName = event.currentTarget.dataset.dish;
@@ -224,8 +235,8 @@ document.querySelectorAll('.dish').forEach(dishElement => {
         winners.push(selectedDish);
         highlightSelectedDish(event.currentTarget); // Highlight the selected dish
 
-        if (currentDishes.length === 0 && winners.length > 1) {
-            currentDishes = winners;
+        if (currentDishes.length === 0 && winners.length > 0) {
+            currentDishes = winners.slice(); // Move winners to currentDishes for next round
             winners = [];
         }
 
@@ -237,9 +248,9 @@ document.querySelectorAll('.dish').forEach(dishElement => {
 
 function highlightSelectedDish(selectedElement) {
     document.querySelectorAll('.dish').forEach(dish => {
-        dish.classList.remove('selected'); // Remove highlight from all
+        dish.classList.remove('selected'); 
     });
-    selectedElement.classList.add('selected'); // Highlight the selected one
+    selectedElement.classList.add('selected'); 
 }
 
 function findDishByName(name) {
@@ -247,6 +258,23 @@ function findDishByName(name) {
 }
 
 function updateProgressBar() {
-    const percentage = Math.min(100, (roundsCompleted / totalRounds) * 100);
+    const percentage = Math.min(100, (roundsCompleted / totalMatches) * 100);
     document.getElementById('progress-bar').style.width = percentage + '%';
 }
+
+document.getElementById('restart-tournament').addEventListener('click', () => {
+    resetTournament();
+    document.getElementById('final-buttons').style.display = 'none'; 
+    document.getElementById('country-selection').style.display = 'block'; 
+});
+
+document.getElementById('yelp-button').addEventListener('click', () => {
+    const winningDish = currentDishes[0].name; 
+    const location = prompt("Enter your location:");
+    const budget = prompt("Enter your budget:");
+
+ 
+    const yelpUrl = `https://www.yelp.com/search?find_desc=${encodeURIComponent(winningDish)}&find_loc=${encodeURIComponent(location)}&price=${encodeURIComponent(budget)}`;
+    window.open(yelpUrl, '_blank'); 
+});
+
