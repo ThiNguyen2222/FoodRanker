@@ -17,7 +17,8 @@ const dishesByCountry = {
         { name: 'Spaghetti', img: 'images/italy/spaghetti.jpg' }, 
         // Desserts
         { name: 'Tiramisu', img: 'images/italy/tiramisu.jpg' },
-        { name: 'Gelato', img: 'images/italy/gelato.jpg' }
+        { name: 'Gelato', img: 'images/italy/gelato.jpg' },
+        { name: 'Panna Cotta', img: 'images/italy/panna_cotta.jpg' }
     ],
     'Mexico': [
         { name: 'Birria', img: 'images/mexico/birria.jpg' }, 
@@ -43,7 +44,9 @@ const dishesByCountry = {
         { name: 'Pani Puri', img: 'images/india/pani_puri.jpg' }, 
         { name: 'Rogan Josh', img: 'images/india/rogan_josh.jpg' }, 
         { name: 'Samosa', img: 'images/india/samosa.jpg' },
-        { name: 'Tandoori Chicken', img: 'images/india/tandoori_chicken.jpg' }
+        { name: 'Tandoori Chicken', img: 'images/india/tandoori_chicken.jpg' },
+        // Desserts
+        { name: 'Gulab Jamun', img: 'images/india/gulab_jamun.jpg' }
     ],
     'Japan': [
         { name: 'Bento', img: 'images/japan/bento.jpg' }, 
