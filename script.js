@@ -9,6 +9,7 @@ const dishesByCountry = {
         { name: 'Steak', img: 'images/america/steak.jpg' }
     ],
     'Italy': [
+        { name: 'Gelato', img: 'images/italy/gelato.jpg' },
         { name: 'Focaccia', img: 'images/italy/focaccia.jpg' }, 
         { name: 'Pizza', img: 'images/italy/pizza.jpg' }, 
         { name: 'Lasagna', img: 'images/italy/lasagna.jpg' }, 
@@ -17,7 +18,6 @@ const dishesByCountry = {
         { name: 'Spaghetti', img: 'images/italy/spaghetti.jpg' }, 
         // Desserts
         { name: 'Tiramisu', img: 'images/italy/tiramisu.jpg' },
-        { name: 'Gelato', img: 'images/italy/gelato.jpg' },
         { name: 'Panna Cotta', img: 'images/italy/panna_cotta.jpg' }
     ],
     'Mexico': [
@@ -168,6 +168,7 @@ let currentDishes = [];
 let winners = [];
 let roundsCompleted = 0;
 let totalMatches = 0;
+let winningDishName = ''; // Store the name of the winning dish
 
 document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
@@ -193,20 +194,14 @@ document.getElementById('start-tournament').addEventListener('click', () => {
     updateProgressBar();
 });
 
-function resetTournament() {
-    roundsCompleted = 0;
-    winners = [];
-    document.getElementById('progress-bar').style.width = '0%';
-    document.getElementById('result').textContent = '';
-}
-
 function displayDishes() {
     if (currentDishes.length === 1 && winners.length === 0) {
         // Final winner
-        document.getElementById('result').textContent = 'Winner: ' + currentDishes[0].name;
+        winningDishName = currentDishes[0].name; // Store the winning dish name
+        document.getElementById('result').textContent = 'Winner: ' + winningDishName;
         document.getElementById('ranker-box').style.display = 'none';
         document.getElementById('next-round').style.display = 'none';
-        document.getElementById('final-buttons').style.display = 'block'; // Show the buttons
+        document.getElementById('final-buttons').style.display = 'block';
         return;
     }
 
@@ -229,7 +224,6 @@ function displayDishes() {
     document.getElementById('dish2-name').textContent = dish2.name;
     document.getElementById('dish2').dataset.dish = dish2.name;
 }
-
 
 document.querySelectorAll('.dish').forEach(dishElement => {
     dishElement.addEventListener('click', (event) => {
@@ -267,17 +261,59 @@ function updateProgressBar() {
 
 document.getElementById('restart-tournament').addEventListener('click', () => {
     resetTournament();
-    document.getElementById('final-buttons').style.display = 'none'; 
-    document.getElementById('country-selection').style.display = 'block'; 
+    document.getElementById('final-buttons').style.display = 'none';
+    document.getElementById('country-selection').style.display = 'block';
+    document.getElementById('progress-bar-container').style.display = 'none'; // Hide progress bar container
+    
+    // Reset the country selection checkboxes
+    document.querySelectorAll('#country-selection input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
 });
 
-document.getElementById('yelp-button').addEventListener('click', () => {
-    const winningDish = currentDishes[0].name; 
-    const location = prompt("Enter your location:");
-    const budget = prompt("Enter your budget:");
+// Get modal and button elements
+const modal = document.getElementById("modal");
+const closeModalButton = document.getElementById("close-modal");
+const searchYelpButton = document.getElementById("search-yelp");
+const yelpButton = document.getElementById("yelp-button"); // The button to open the modal
 
- 
-    const yelpUrl = `https://www.yelp.com/search?find_desc=${encodeURIComponent(winningDish)}&find_loc=${encodeURIComponent(location)}&price=${encodeURIComponent(budget)}`;
-    window.open(yelpUrl, '_blank'); 
-});
+// Open modal when Yelp button is clicked
+yelpButton.onclick = function () {
+  modal.style.display = "block";
+};
 
+// Close modal when close button is clicked
+closeModalButton.onclick = function () {
+  modal.style.display = "none";
+};
+
+// Close modal if the user clicks anywhere outside the modal
+window.onclick = function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
+searchYelpButton.onclick = function () {
+    const location = document.getElementById("location").value.trim();
+    const budget = document.getElementById("budget").value;
+  
+    // Ensure both fields are filled out
+    if (location && budget && winningDishName) {
+      // Encode the location and winning dish to ensure it's a valid URL format
+      const encodedLocation = encodeURIComponent(location);
+      const encodedDish = encodeURIComponent(winningDishName);
+  
+      // Yelp search URL format for the winning dish and location
+      const yelpUrl = `https://www.yelp.com/search?find_desc=${encodedDish}&find_loc=${encodedLocation}`;
+  
+      // Redirect to Yelp
+      window.location.href = yelpUrl;
+  
+      // Close the modal after redirect
+      modal.style.display = "none";
+    } else {
+      // Show an error if the location, budget, or winning dish is missing
+      alert("Please fill in all fields.");
+    }
+};
