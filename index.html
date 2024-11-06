@@ -50,8 +50,32 @@
         <div id="final-buttons" style="display: none;">
             <button id="restart-tournament">Restart</button>
             <button id="yelp-button">Yelp</button>
+        </div>
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="close-modal">&times;</span>
+      <h2>Find Restaurants on Yelp</h2>
+      
+      <!-- Location Input -->
+      <label for="location">Enter Location:</label>
+      <input type="text" id="location" placeholder="Enter city, zip code, or address">
+  
+      <!-- Budget Input -->
+      <label for="budget">Select Budget:</label>
+      <select id="budget">
+        <option value="$">Budget ($)</option>
+        <option value="$$">Mid-range ($$)</option>
+        <option value="$$$">Expensive ($$$)</option>
+        <option value="$$$$">Luxury ($$$$)</option>
+      </select>
+  
+      <!-- Search Button -->
+      <button id="search-yelp">Search Yelp</button>
     </div>
-
+  </div>
+  
+  
     <script src="script.js"></script>
 </body>
 </html>
