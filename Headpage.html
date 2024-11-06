@@ -41,6 +41,25 @@
                     <div class="content-box" id="contact" style="display:none;">
                         <h1>Contact Us</h1>
                         <p>Get in touch with us!</p>
+                        <form id="contactForm" action="mail.php" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name">
+
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email">
+
+                            <label for="subject">Subject:</label>
+                            <input type="text" name="subject" id="subject">
+
+                            <label for="message">Message:</label>
+                            <textarea name="message" cols="30" rows="10"></textarea>
+
+                            <input type="submit" value="Send">
+                        </form>
+                            <!-- Success message container -->
+                            <div id="successMessage" style="display: none; color: green; margin-top: 20px;">
+                                Your message has been sent successfully!
+                        </div>
                     </div>
                 </div>
             </div>
