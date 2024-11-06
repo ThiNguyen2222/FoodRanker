@@ -32,3 +32,39 @@ function showContent(section) {
     });
     document.getElementById(section).style.display = 'block'; // Show selected content
 }
+
+// Email form submission
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent page refresh on submit
+
+    // Form data to send
+    const formData = new FormData(this);
+
+    // Send data to the server
+    fetch("mail.php", {
+        method: "POST",
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        const successMessage = document.getElementById("successMessage");
+
+        if (data.trim() === "success") { // Check if the response is "success"
+            successMessage.textContent = "Your message has been sent successfully!";
+            successMessage.style.display = "block";
+            
+            // Reset the form fields
+            document.getElementById("contactForm").reset();
+        } else {
+            successMessage.textContent = "Error sending email.";
+            successMessage.style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        const successMessage = document.getElementById("successMessage");
+        successMessage.textContent = "An error occurred. Please try again later.";
+        successMessage.style.display = "block";
+    });
+});
+
