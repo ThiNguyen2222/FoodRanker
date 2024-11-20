@@ -11,21 +11,34 @@
         <h1>Food Ranker</h1>
 
         <div id="country-selection">
-            <h2>Select Countries</h2>
-            <label><input type="checkbox" value="USA"> USA</label>
-            <label><input type="checkbox" value="Italy"> Italy</label>
-            <label><input type="checkbox" value="Mexico"> Mexico</label>
-            <label><input type="checkbox" value="India"> India</label>
-            <label><input type="checkbox" value="Japan"> Japan</label>
-            <label><input type="checkbox" value="China"> China</label> <!-- Added China -->
-            <label><input type="checkbox" value="France"> France</label> <!-- Added France -->
-            <label><input type="checkbox" value="Korea"> Korea</label> <!-- Added Korea -->
-            <label><input type="checkbox" value="Thailand"> Thailand</label> <!-- Added Thailand -->
-            <label><input type="checkbox" value="Vietnam"> Vietnam</label> <!-- Added Vietnam -->
+            <h2 id="select-countries-header">Select Countries</h2>
+          
+            <!-- Group 1 -->
+            <div class="country-group">
+              <label><input type="checkbox" value="USA"> USA</label>
+              <label><input type="checkbox" value="Italy"> Italy</label>
+              <label><input type="checkbox" value="Mexico"> Mexico</label>
+            </div>
+          
+            <!-- Group 2 -->
+            <div class="country-group">
+              <label><input type="checkbox" value="India"> India</label>
+              <label><input type="checkbox" value="Japan"> Japan</label>
+              <label><input type="checkbox" value="China"> China</label>
+              <label><input type="checkbox" value="France"> France</label>
+            </div>
+          
+            <!-- Group 3 -->
+            <div class="country-group">
+              <label><input type="checkbox" value="Korea"> Korea</label>
+              <label><input type="checkbox" value="Thailand"> Thailand</label>
+              <label><input type="checkbox" value="Vietnam"> Vietnam</label>
+            </div>
+          
+            <!-- Start Ranking Button -->
             <button id="start-tournament">Start Ranking</button>
-        </div>
+          </div>
         
-
         <!-- Progress Bar -->
         <div id="progress-bar-container" style="display:none;">
             <div id="progress-bar" style="width: 0%;"></div>
@@ -51,6 +64,7 @@
             <button id="restart-tournament">Restart</button>
             <button id="yelp-button">Yelp</button>
         </div>
+        
 <!-- Modal -->
 <div id="modal" class="modal">
     <div class="modal-content">
