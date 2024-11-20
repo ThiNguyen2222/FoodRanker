@@ -68,3 +68,23 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     });
 });
 
+// Select all "Show Dishes" buttons
+const toggleDishesButtons = document.querySelectorAll('.toggle-dishes');
+
+// Add a click event listener to each button
+toggleDishesButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Find the dishes list within the same parent category box
+    const categoryBox = this.parentElement;
+    const dishesList = categoryBox.querySelector('.dishes-list');
+
+    // Toggle the visibility of the dishes list
+    if (dishesList.style.display === 'none' || dishesList.style.display === '') {
+      dishesList.style.display = 'block';
+      this.textContent = 'Hide Dishes'; // Change button text
+    } else {
+      dishesList.style.display = 'none';
+      this.textContent = 'Show Dishes'; // Change button text back
+    }
+  });
+});
