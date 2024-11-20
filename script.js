@@ -1,15 +1,25 @@
 const dishesByCountry = {
-    'USA': [
+    'USA': [ // 14 dishes
         { name: 'Barbeque', img: 'images/america/bbq.jpg' },
         { name: 'Burger', img: 'images/america/burger_fries.jpg' },
         { name: 'Chicken Sandwich', img: 'images/america/chicken_sandwich.jpg' },
+        { name: 'Clam Chowder', img: 'images/america/.jpg' }, // need image
+        { name: 'Corn Dog', img: 'images/america/.jpg' }, // need image
         { name: 'Fried Chicken', img: 'images/america/fried_chicken.jpg' },
         { name: 'Hot Dog', img: 'images/america/hot_dog.jpg' },
+        { name: 'Macaroni and Cheese', img: 'images/america/.jpg' }, // need image
+        { name: 'Pancakes', img: 'images/america/.jpg' }, // need image
         { name: 'Salad', img: 'images/america/salad.jpg' },
-        { name: 'Steak', img: 'images/america/steak.jpg' }
+        { name: 'Steak', img: 'images/america/steak.jpg' },
+        // Desserts
+        { name: 'Apple Pie', img: 'images/america/.jpg' }, // need image
+        { name: 'Brownies', img: 'images/america/.jpg' }, //need image
+        { name: 'Chocolate Chip Cookies', img: 'images/america/.jpg' }, // need image
     ],
-    'Italy': [
-        { name: 'Gelato', img: 'images/italy/gelato.jpg' },
+    'Italy': [ // 14 dishes
+        { name: 'Branzino', img: 'images/italy/gelato.jpg' }, // need image
+        { name: 'Kampachi Crudo', img: 'images/italy/.jpg' }, // need image
+        { name: 'Calamari Fritti', img: 'images/italy/.jpg' }, // need image
         { name: 'Focaccia', img: 'images/italy/focaccia.jpg' }, 
         { name: 'Pizza', img: 'images/italy/pizza.jpg' }, 
         { name: 'Lasagna', img: 'images/italy/lasagna.jpg' }, 
@@ -17,10 +27,13 @@ const dishesByCountry = {
         { name: 'Risotto', img: 'images/italy/shrimp_risotto.jpg' }, 
         { name: 'Spaghetti', img: 'images/italy/spaghetti.jpg' }, 
         // Desserts
+        { name: 'Affogato', img: 'images/italy/.jpg' }, // need image
+        { name: 'Biscotti', img: 'images/italy/.jpg' }, // need image
+        { name: 'Gelato', img: 'images/italy/gelato.jpg' },
         { name: 'Tiramisu', img: 'images/italy/tiramisu.jpg' },
         { name: 'Panna Cotta', img: 'images/italy/panna_cotta.jpg' }
     ],
-    'Mexico': [
+    'Mexico': [ // 11 dishes
         { name: 'Birria', img: 'images/mexico/birria.jpg' }, 
         { name: 'Burritos', img: 'images/mexico/burrito.jpg' }, 
         { name: 'Ceviche', img: 'images/mexico/ceviche.jpg' }, 
@@ -34,7 +47,7 @@ const dishesByCountry = {
         // Desserts
         { name: 'Churros', img: 'images/mexico/churros.jpg' }
     ],
-    'India': [
+    'India': [ // 11 dishes
         { name: 'Biryani', img: 'images/india/biryani.jpg' }, 
         { name: 'Butter Chicken', img: 'images/india/butter_chicken.jpg' }, 
         { name: 'Chaat', img: 'images/india/chaat.jpg' }, 
@@ -48,10 +61,10 @@ const dishesByCountry = {
         // Desserts
         { name: 'Gulab Jamun', img: 'images/india/gulab_jamun.jpg' }
     ],
-    'Japan': [
+    'Japan': [ // 14 dishes selected, 19 dishes total
         { name: 'Bento', img: 'images/japan/bento.jpg' }, 
-        { name: 'Gyoza', img: 'images/japan/gyoza.jpg' }, 
-        { name: 'Karaage Don', img: 'images/japan/karaage_don.jpg' }, 
+        // { name: 'Gyoza', img: 'images/japan/gyoza.jpg' }, 
+        // { name: 'Karaage Don', img: 'images/japan/karaage_don.jpg' }, 
         { name: 'Katsu Curry', img: 'images/japan/katsu_curry.jpg' }, 
         { name: 'Okonomiyaki', img: 'images/japan/okonomiyaki.jpg' }, 
         { name: 'Onigiri', img: 'images/japan/onigiri.jpg' }, 
@@ -60,17 +73,17 @@ const dishesByCountry = {
         { name: 'Soba', img: 'images/japan/soba.jpg' }, 
         { name: 'Sushi', img: 'images/japan/sushi.jpg' }, 
         { name: 'Takoyaki', img: 'images/japan/takoyaki.jpg' }, 
-        { name: 'Tempura', img: 'images/japan/tempura.jpg' }, 
+        // { name: 'Tempura', img: 'images/japan/tempura.jpg' }, 
         { name: 'Teppanyaki', img: 'images/japan/teppanyaki.jpg' }, 
         { name: 'Udon', img: 'images/japan/udon.jpg' }, 
-        { name: 'Unagi Donburi', img: 'images/japan/unagi_donburi.jpg' }, 
+        // { name: 'Unagi Donburi', img: 'images/japan/unagi_donburi.jpg' }, 
         { name: 'Yakiniku', img: 'images/japan/yakiniku.jpg' }, 
-        { name: 'Yakitori', img: 'images/japan/yakitori.jpg' }, 
+        // { name: 'Yakitori', img: 'images/japan/yakitori.jpg' }, 
         // Desserts
         { name: 'Mochi', img: 'images/japan/mochi.jpg' }, 
         { name: 'Taiyaki', img: 'images/japan/taiyaki.jpg' }, 
     ],
-    'China': [
+    'China': [ // 11 dishes
         { name: 'Chow Mein (Stir-Fried Noodles)', img: 'images/china/chow_mein.jpg' },
         { name: 'Congee (Porridge)', img: 'images/china/congee.jpg' },
         { name: 'Dandan Noodles', img: 'images/china/dandan_mian.jpg' },
@@ -84,49 +97,49 @@ const dishesByCountry = {
         // Desserts
         { name: 'Tanghulu', img: 'images/china/tanghulu.jpg' }
     ],
-    'France': [
+    'France': [ // 14 dishes slected, 17 total
         { name: 'Beef Stew', img: 'images/france/beef_stew.jpg' }, 
         { name: 'Bouillabaisse', img: 'images/france/bouillabaisse.jpg' }, 
         { name: 'Confit de Canard', img: 'images/france/confit_de_canard.jpg' }, 
         { name: 'Croissant', img: 'images/france/croissant.jpg' }, 
         { name: 'Escargot', img: 'images/france/escargot.jpg' }, 
         { name: 'Jambon Beurre', img: 'images/france/jambon_beurre.jpg' }, 
-        { name: 'Onion Soup', img: 'images/france/onion_soup.jpg' }, 
+        // { name: 'Onion Soup', img: 'images/france/onion_soup.jpg' }, 
         { name: 'Pot Au Feu', img: 'images/france/pot_au_feu.jpg' }, 
         { name: 'Quiche Lorraine', img: 'images/france/quiche_lorraine.jpg' }, 
         { name: 'Ratatouille', img: 'images/france/ratatouille.jpg' },
         { name: 'Steak Frites', img: 'images/france/steak_frites.jpg' }, 
         { name: 'Steak Tartare', img: 'images/france/steak_tartare.jpg' }, 
         // Desserts
-        { name: 'Creme Brulee', img: 'images/france/creme_brulee.jpg' }, 
+        // { name: 'Creme Brulee', img: 'images/france/creme_brulee.jpg' }, 
         { name: 'Crepes', img: 'images/france/crepes.jpg' }, 
         { name: 'Macarons', img: 'images/france/macarons.jpg' }, 
         { name: 'Souffle', img: 'images/france/souffle.jpg' },
-        { name: 'Tarte Tatin', img: 'images/france/tarte_tatin.jpg' }
+        // { name: 'Tarte Tatin', img: 'images/france/tarte_tatin.jpg' }
     ],
-    'Korea': [
+    'Korea': [ // 14 dishes selected, 19 total
         { name: 'Bibim Naengmyeon (Spicy Cold Noodles)', img: 'images/korea/bibim_naengmyeon.jpg' }, 
         { name: 'Bibimbap (Korean Rice Bowl)', img: 'images/korea/bibimbap.jpg' }, 
         { name: 'Bossam (Boiled Pork Wrap)', img: 'images/korea/bossam.jpg' }, 
-        { name: 'Chimaek (Fried Chicken with Beer)', img: 'images/korea/chimaek.jpg' }, 
-        { name: 'Gamjatang (Pork Bone Soup)', img: 'images/korea/gamjatang.jpg' }, 
+        // { name: 'Chimaek (Fried Chicken with Beer)', img: 'images/korea/chimaek.jpg' }, 
+        // { name: 'Gamjatang (Pork Bone Soup)', img: 'images/korea/gamjatang.jpg' }, 
         { name: 'Gopchang (Small Intestines)', img: 'images/korea/gopchang.jpg' }, 
         { name: 'Japchae (Stir-Fried Noodles)', img: 'images/korea/japchae.jpg' },
-        { name: 'Jeon', img: 'images/korea/jeon.jpg' }, 
+        // { name: 'Jeon', img: 'images/korea/jeon.jpg' }, 
         { name: 'Jjajangmyeon (Black Bean Noodles)', img: 'images/korea/jjajangmyeon.jpg' }, 
         { name: 'Korean Barbeque', img: 'images/korea/kbbq.jpg' }, 
         { name: 'Korean Fried Chicken', img: 'images/korea/kfried_chicken.jpg' }, 
         { name: 'Kimbap', img: 'images/korea/kimbap.jpg' }, 
         { name: 'Kimchi Fried Rice', img: 'images/korea/kimchi_fried_rice.jpg' }, 
-        { name: 'Kimchi Stew', img: 'images/korea/kimchi_stew.jpg' }, 
-        { name: 'Mandu', img: 'images/korea/mandu.jpg' }, 
+        // { name: 'Kimchi Stew', img: 'images/korea/kimchi_stew.jpg' }, 
+        // { name: 'Mandu', img: 'images/korea/mandu.jpg' }, 
         { name: 'Yangnyeom Gejang (Spicy Marinated Crab)', img: 'images/korea/seasoned_crab.jpg' }, 
         { name: 'Tofu Stew', img: 'images/korea/tofu_stew.jpg' }, 
         { name: 'Tteokbokki (Rice Cake)', img: 'images/korea/tteokbokki.jpg' }, 
         // Desserts
         { name: 'Bingsoo', img: 'images/korea/bingsoo.jpg' }, 
     ],
-    'Thailand': [
+    'Thailand': [ // 14 dishes
         { name: 'Sua Rong Hai (Crying Tiger)', img: 'images/thailand/crying_tiger.jpg' }, 
         { name: 'Kaeng Khiao Wan (Green Curry)', img: 'images/thailand/green_curry.jpg' }, 
         { name: 'Grilled Skewers', img: 'images/thailand/grilled_skewers.jpg' }, 
@@ -141,21 +154,22 @@ const dishesByCountry = {
         { name: 'Yellow Curry', img: 'images/thailand/yellow_curry.jpg' }, 
         // Desserts
         { name: 'Mango Sticky Rice', img: 'images/thailand/mango_sticky_rice.jpg' }, 
+        { name: 'Crispy Banana Roll', img: 'images/thailand/.jpg' }, // need image
     ],
-    'Vietnam': [
+    'Vietnam': [ // 14 dishes selected, 17 total
         { name: 'Banh Cuon', img: 'images/vietnam/banh_cuon.jpg' }, 
         { name: 'Banh Khot (Savory Mini Pancakes)', img: 'images/vietnam/banh_khot.jpg' }, 
         { name: 'Banh Mi (Vietnamese Sandwich)', img: 'images/vietnam/banh_mi.jpg' }, 
         { name: 'Banh Xeo (Vietnamese Crispy Crepes) ', img: 'images/vietnam/banh_xeo.jpg' }, 
-        { name: 'Bo Kho (Beef Stew)', img: 'images/vietnam/bo_kho.jpg' }, 
+        // { name: 'Bo Kho (Beef Stew)', img: 'images/vietnam/bo_kho.jpg' }, 
         { name: 'Bo Ne (Sizzling Steak and Eggs) ', img: 'images/vietnam/bo_ne.jpg' }, 
         { name: 'Bun Bo Hue (Spicy Beef Noddle Soup)', img: 'images/vietnam/bun_bo_hue.jpg' }, 
-        { name: 'Bun Cha (Vietnamese Meatball Noodles)', img: 'images/vietnam/bun_cha.jpg' }, 
+        // { name: 'Bun Cha (Vietnamese Meatball Noodles)', img: 'images/vietnam/bun_cha.jpg' }, 
         { name: 'Bun Rieu (Crab Noodle Soup)', img: 'images/vietnam/bun_rieu.jpg' }, 
         { name: 'Cha Gio (Eggrolls)', img: 'images/vietnam/cha_gio.jpg' }, 
         { name: 'Com Tam (Vietnamese Broken Rice) ', img: 'images/vietnam/com_tam.jpg' }, 
         { name: 'Goi Cuon (Spring Rolls)', img: 'images/vietnam/goi_cuon.jpg' }, 
-        { name: 'Hu Tieu ', img: 'images/vietnam/hu_tieu.jpg' }, 
+        // { name: 'Hu Tieu ', img: 'images/vietnam/hu_tieu.jpg' }, 
         { name: 'Mi Quang (Vietnamese Turmeric Noodle Soup)', img: 'images/vietnam/mi_quang.jpg' }, 
         { name: 'Pho', img: 'images/vietnam/pho.jpg' }, 
         // Desserts
