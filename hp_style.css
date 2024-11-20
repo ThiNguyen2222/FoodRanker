@@ -167,3 +167,54 @@ Content box styling */
 #contact input[type="submit"]:hover {
     background-color: #6B0504;
 }
+
+/* Category boxes for countries */
+.category-box {
+    width: 300px;
+    padding: 15px;
+    background-color: #6B0504;
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.category-box:hover {
+    transform: scale(1.05);
+}
+
+/* Dishes list, initially hidden */
+.dishes-list {
+    display: none; /* Hide dishes list by default */
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #6B0504;
+    border-radius: 5px;
+}
+
+.dishes-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dishes-list ul li {
+    margin: 5px 0;
+}
+
+/* Toggle button for showing/hiding dishes */
+.toggle-dishes {
+    padding: 5px 10px;
+    background-color: #8A0808;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-dishes:hover {
+    background-color: #6B0504;
+}
