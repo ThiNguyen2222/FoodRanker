@@ -181,8 +181,9 @@ const dishesByCountry = {
 let currentDishes = [];
 let winners = [];
 let roundsCompleted = 0;
-let totalMatches = 0;
+let totalMatches;
 let winningDishName = ''; // Store the name of the winning dish
+let initialDishCount; // Add this to track the original number of dishes
 
 document.getElementById('start-tournament').addEventListener('click', () => {
     const selectedCountries = Array.from(document.querySelectorAll('#country-selection input:checked'))
@@ -196,8 +197,12 @@ document.getElementById('start-tournament').addEventListener('click', () => {
     // Combine dishes from the selected countries
     currentDishes = selectedCountries.flatMap(country => dishesByCountry[country]);
 
-    // Calculate total matches: number of dishes - 1
-    totalMatches = currentDishes.length - 1;
+    // Store the initial number of dishes
+    initialDishCount = currentDishes.length;
+
+    // Calculate total matches more precisely
+    // In a tournament, total matches = number of initial dishes - 1
+    totalMatches = initialDishCount - 1;
 
     document.getElementById('country-selection').style.display = 'none';
     document.getElementById('progress-bar-container').style.display = 'block';
@@ -244,13 +249,14 @@ document.querySelectorAll('.dish').forEach(dishElement => {
         const selectedDishName = event.currentTarget.dataset.dish;
         const selectedDish = findDishByName(selectedDishName);
         winners.push(selectedDish);
-        highlightSelectedDish(event.currentTarget); // Highlight the selected dish
+        highlightSelectedDish(event.currentTarget);
 
         if (currentDishes.length === 0 && winners.length > 0) {
-            currentDishes = winners.slice(); // Move winners to currentDishes for next round
+            currentDishes = winners.slice();
             winners = [];
         }
 
+        // Increment rounds completed
         roundsCompleted++;
         updateProgressBar();
         displayDishes();
@@ -268,9 +274,30 @@ function findDishByName(name) {
     return Object.values(dishesByCountry).flat().find(dish => dish.name === name);
 }
 
+
 function updateProgressBar() {
-    const percentage = Math.min(100, (roundsCompleted / totalMatches) * 100);
-    document.getElementById('progress-bar').style.width = percentage + '%';
+    const progressBar = document.getElementById('progress-bar');
+    
+    // Calculate the progress percentage
+    const progressPercentage = Math.round((roundsCompleted / totalMatches) * 100);
+    
+    // Set the width of the progress bar without the text
+    progressBar.style.width = `${progressPercentage}%`;
+
+    // Remove text content
+    progressBar.textContent = '';
+}
+
+
+
+function resetTournament() {
+    winners = [];
+    roundsCompleted = 0;
+    winningDishName = '';
+    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('progress-bar').textContent = '0% Completed';
+    document.getElementById('result').textContent = '';
+    document.querySelectorAll('.dish').forEach(dish => dish.classList.remove('selected'));
 }
 
 document.getElementById('restart-tournament').addEventListener('click', () => {
