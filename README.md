@@ -16,3 +16,17 @@ Just select your countries of choice, rank your dishes, and start yelping.
 * Select yelp and input your location/budget
 * Click Search
 * Done!
+
+### Headpage
+Corresponding files
+* headpage.html
+* hp.js
+* hp_style.css
+* images folder
+
+## Ranking System
+Corresponding files
+* index.html
+* script.js
+* style.css
+* images folder
