@@ -17,7 +17,7 @@ Just select your countries of choice, rank your dishes, and start yelping.
 * Click Search
 * Done!
 
-### Headpage
+## Headpage
 Corresponding files
 * headpage.html
 * hp.js
