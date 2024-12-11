@@ -8,8 +8,8 @@ It's a simple website to help you decide on what your next meal will be if you'r
 Just select your countries of choice, rank your dishes, and start yelping.
 
 ## How to Use FoodRanker
-* Download the zip folder 
-* Start off by clicking on **Headpage.html**
+* Download the zip folder and unzip
+* Open the folder and start off by clicking on **Headpage.html** to open the page
 * Click start
 * Select your countries
 * Finish ranking
