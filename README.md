@@ -18,14 +18,14 @@ Just select your countries of choice, rank your dishes, and start yelping.
 * Done!
 
 ## Headpage
-Corresponding files
+Corresponding files:
 * headpage.html
 * hp.js
 * hp_style.css
 * images folder
 
 ## Ranking System
-Corresponding files
+Corresponding files:
 * index.html
 * script.js
 * style.css
