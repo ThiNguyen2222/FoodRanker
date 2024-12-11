@@ -182,22 +182,22 @@ body {
 
 /* Modal background overlay */
 #modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
-  overflow: auto; /* Enable scroll if needed */
-  padding-top: 50px; /* Add some space at the top */
+  background-color: rgba(0, 0, 0, 0.7); 
+  overflow: auto; 
+  padding-top: 50px; 
 }
 
 /* Modal content box */
 .modal-content {
   background-color: #fff;
-  margin: 5% auto; /* Center the modal */
+  margin: 5% auto; 
   padding: 20px;
   border-radius: 10px;
   width: 80%;
@@ -229,7 +229,7 @@ body {
   border: 2px solid #ddd;
   border-radius: 5px;
   outline: none;
-  box-sizing: border-box; /* Ensures padding is included in width */
+  box-sizing: border-box; 
   transition: border-color 0.3s ease;
 }
 
@@ -295,3 +295,41 @@ body {
 #search-yelp:hover {
   background-color: #FF1A1A;
 }
+
+/* Restart and Yelp Buttons */
+#restart-tournament, #yelp-button {
+  padding: 8px 20px; 
+  background-color: #275e58; 
+  color: white;
+  font-size: 14px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  margin-top: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+#restart-tournament:hover, #yelp-button:hover {
+  background-color: #4fa69a; 
+  transform: scale(1.05); 
+}
+
+/* Specific styling for Restart and Yelp button */
+#restart-tournament {
+  background-color: #76c7c0; 
+}
+
+#restart-tournament:hover {
+  background-color: #4fa69a; 
+}
+
+#yelp-button {
+  background-color: #76c7c0; 
+}
+
+#yelp-button:hover {
+  background-color: #4fa69a;
+}
+
