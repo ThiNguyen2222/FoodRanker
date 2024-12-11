@@ -195,7 +195,6 @@ Content box styling */
     z-index: 100;
 }
 
-/* Ensure the parent country box has relative positioning */
 .country-box {
     position: relative;
     z-index: 1;
@@ -333,5 +332,115 @@ Content box styling */
   border-radius: 5px;
   padding: 10px;
   text-align: center;
+}
+
+#information {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+
+#information .info-content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 600px;
+    padding: 30px; 
+    border: 2px solid rgba(107, 5, 4, 0.8); 
+    border-radius: 10px; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
+    margin: 0 auto; 
+}
+
+#information .info-content p {
+    font-size: 22px;
+    font-weight: bold;
+    color: #6B0504;
+    line-height: 1.8;
+}
+
+#information .info-content ol {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6B0504;
+    list-style-position: inside;
+    margin: 0; 
+    padding: 0; 
+    line-height: 1.8;
+}
+
+#information .info-content ol li {
+    margin: 5px 0;
+}
+
+/* Home Page */
+#home {
+    min-height: 400px;
+    padding: 40px;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#home h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #6B0504;
+}
+
+.home-tagline {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #6B0504; 
+}
+
+.intro-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: #6B0504; 
+}
+
+.cta-container {
+    margin-top: 20px;
+}
+
+.start-button {
+    background-color: #6B0504; 
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.start-button:hover {
+    background-color: #8A0808;
+    transform: scale(1.1);
+}
+
+#home .content-box {
+    position: relative;
+    z-index: 1;
 }
 
